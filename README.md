@@ -871,7 +871,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Md Sarfaraz Alam**
 
 - GitHub: [@Sarfarazsfz](https://github.com/Sarfarazsfz)
-- LinkedIn: https://www.linkedin.com/in/md-sarfaraz-alam
+- LinkedIn: https://www.linkedin.com/in/faraz4237
 - Email: sarfaraz.alam.dev@gmail.com
 
 ---
