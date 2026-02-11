@@ -196,20 +196,18 @@ Test the application with these pre-configured accounts:
 <div align="center">
 
 ### 🔐 Login Page
-![Login Page]<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/56d5f36e-afdd-4e1e-97a3-f08b75b01460" />
+<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/56d5f36e-afdd-4e1e-97a3-f08b75b01460" />
 
 ### 📊 Dashboard
-![Dashboard](https://via.placeholder.com/800x400/00695c/ffffff?text=Dashboard+with+Statistics)
+<img width="1918" height="912" alt="image" src="https://github.com/user-attachments/assets/ac5dc47e-a687-468e-868a-240b49bc945e" />
 
 ### 📚 Books Management
-![Books Page](https://via.placeholder.com/800x400/2e7d32/ffffff?text=Books+Management)
+<img width="1918" height="912" alt="image" src="https://github.com/user-attachments/assets/e9fbcb41-20b1-4da6-b7c7-181b80b75b57" />
 
 ### 📋 Issue Management
-![Issue Page](https://via.placeholder.com/800x400/d84315/ffffff?text=Issue+Management)
+<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/494701dc-fd50-4828-94d0-9266b88462ad" />
 
 </div>
-
-> **Note:** Replace placeholder images with actual screenshots of your application
 
 ---
 
