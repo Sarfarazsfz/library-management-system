@@ -196,7 +196,8 @@ Test the application with these pre-configured accounts:
 <div align="center">
 
 ### 🔐 Login Page
-![Login Page](https://via.placeholder.com/800x400/1a237e/ffffff?text=Login+Page)
+![Login Page](<img width="1918" height="913" alt="image" src="https://github.com/user-attachments/assets/56d5f36e-afdd-4e1e-97a3-f08b75b01460" />
+)
 
 ### 📊 Dashboard
 ![Dashboard](https://via.placeholder.com/800x400/00695c/ffffff?text=Dashboard+with+Statistics)
