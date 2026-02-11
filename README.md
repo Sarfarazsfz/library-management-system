@@ -868,10 +868,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+**Md Sarfaraz Alam**
+
+- GitHub: [@Sarfarazsfz](https://github.com/Sarfarazsfz)
+- LinkedIn: https://www.linkedin.com/in/md-sarfaraz-alam
+- Email: sarfaraz.alam.dev@gmail.com
 
 ---
 
@@ -938,14 +939,16 @@ A: Fork the repository, make your changes, and submit a pull request. See the Co
 
 ## 📞 Support
 
-For support, email your.email@example.com or open an issue in the repository.
+If you have any questions, suggestions, or feedback, feel free to open an issue in this repository or contact me directly at:
+
+📧 **sarfaraz.alam.dev@gmail.com**
 
 ---
 
 <div align="center">
 
-**⭐ Star this repository if you find it helpful!**
+⭐ **If you found this project helpful, please consider giving it a star!**
 
-Made with ❤️ by [Md Sarfaraz Alam]
+Made with ❤️ by **Md Sarfaraz Alam**
 
 </div>
