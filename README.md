@@ -28,16 +28,155 @@ The Library Management System is a comprehensive web application designed to str
 - 🚀 **Production Ready** - Dockerized deployment with CI/CD support
 - 🔍 **Advanced Search** - Efficient book cataloging and search functionality
 
+### 🚀 Quick Start
+
+**Try It Live**
+1. Visit [library-management-system-alpha-lac.vercel.app](https://library-management-system-alpha-lac.vercel.app)
+2. Login with demo credentials (see below)
+
+**Run Locally**
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/library-management-system.git
+
+# Start Backend
+cd backend
+mvn spring-boot:run
+
+# Start Frontend (new terminal)
+cd frontend
+npm install && npm run dev
+```
+Visit `http://localhost:5173` and you're ready to go!
+
+
+---
+
+## 🏗️ System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          Client Layer (Browser)                          │
+│                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────┐   │
+│  │                    React + TypeScript (Vite)                     │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │   │
+│  │  │   Pages  │  │Components│  │  Hooks   │  │   Services   │   │   │
+│  │  │          │  │          │  │          │  │              │   │   │
+│  │  │ Dashboard│  │  Cards   │  │ useAuth  │  │  API Client  │   │   │
+│  │  │  Books   │  │  Forms   │  │          │  │   (Axios)    │   │   │
+│  │  │  Users   │  │  Tables  │  │          │  │              │   │   │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────────┘   │   │
+│  └─────────────────────────────────────────────────────────────────┘   │
+│                                    │                                     │
+│                                    │ HTTPS (REST API)                    │
+│                                    │                                     │
+└────────────────────────────────────┼─────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                       Application Layer (Render)                         │
+│                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────┐   │
+│  │                  Spring Boot 3.2 (Java 17)                       │   │
+│  │                                                                   │   │
+│  │  ┌─────────────────────────────────────────────────────────┐   │   │
+│  │  │              Security Layer (Spring Security)            │   │   │
+│  │  │  ┌────────────────┐  ┌─────────────────────────────┐   │   │   │
+│  │  │  │ JWT Filter     │  │   Authentication Manager    │   │   │   │
+│  │  │  └────────────────┘  └─────────────────────────────┘   │   │   │
+│  │  └─────────────────────────────────────────────────────────┘   │   │
+│  │                                                                   │   │
+│  │  ┌─────────────────────────────────────────────────────────┐   │   │
+│  │  │                  Controller Layer                        │   │   │
+│  │  │  • AuthController    • BookController                    │   │   │
+│  │  │  • UserController    • IssueController                   │   │   │
+│  │  └─────────────────────────────────────────────────────────┘   │   │
+│  │                           │                                     │   │
+│  │  ┌─────────────────────────────────────────────────────────┐   │   │
+│  │  │                   Service Layer                          │   │   │
+│  │  │  • AuthService      • BookService                        │   │   │
+│  │  │  • UserService      • IssueService                       │   │   │
+│  │  │  (Business Logic, Validation, Fine Calculation)          │   │   │
+│  │  └─────────────────────────────────────────────────────────┘   │   │
+│  │                           │                                     │   │
+│  │  ┌─────────────────────────────────────────────────────────┐   │   │
+│  │  │              Repository Layer (Spring Data JPA)          │   │   │
+│  │  │  • UserRepository    • BookRepository                    │   │   │
+│  │  │  • IssueRepository                                       │   │   │
+│  │  └─────────────────────────────────────────────────────────┘   │   │
+│  └─────────────────────────────────────────────────────────────────┘   │
+│                                    │                                     │
+│                                    │ JDBC                                │
+│                                    ▼                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+                                     │
+                                     ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      Data Layer (Render PostgreSQL)                      │
+│                                                                           │
+│  ┌─────────────────────────────────────────────────────────────────┐   │
+│  │                      PostgreSQL Database                         │   │
+│  │                                                                   │   │
+│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────────┐   │   │
+│  │  │  users   │  │  books   │  │  issues  │  │  roles       │   │   │
+│  │  │          │  │          │  │          │  │              │   │   │
+│  │  │ • id     │  │ • id     │  │ • id     │  │ • id         │   │   │
+│  │  │ • email  │  │ • isbn   │  │ • bookId │  │ • name       │   │   │
+│  │  │ • pass   │  │ • title  │  │ • userId │  │ • privileges │   │   │
+│  │  │ • role   │  │ • author │  │ • issueD │  │              │   │   │
+│  │  │          │  │ • status │  │ • returnD│  │              │   │   │
+│  │  │          │  │          │  │ • fine   │  │              │   │   │
+│  │  └──────────┘  └──────────┘  └──────────┘  └──────────────┘   │   │
+│  └─────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Architecture Components
+
+#### **Frontend (Vercel)**
+- **Framework**: React 18 with TypeScript for type-safe development
+- **Build Tool**: Vite for lightning-fast HMR and optimized builds
+- **UI Library**: Material-UI v7 for consistent, professional components
+- **State Management**: React Context API + Custom Hooks
+- **Routing**: React Router v6 for client-side navigation
+- **API Communication**: Axios with interceptors for JWT handling
+
+#### **Backend (Render)**
+- **Framework**: Spring Boot 3.2 with embedded Tomcat server
+- **Security**: Spring Security with JWT token-based authentication
+- **Data Layer**: Spring Data JPA with Hibernate ORM
+- **Architecture**: Layered architecture (Controller → Service → Repository)
+- **Validation**: Bean Validation (JSR-380) for input validation
+
+#### **Database (Render PostgreSQL)**
+- **Type**: PostgreSQL 15 (Relational Database)
+- **Features**: ACID compliance, referential integrity, indexing
+- **Connection Pooling**: HikariCP for efficient connection management
+
+### Data Flow
+
+1. **User Request**: User interacts with React frontend
+2. **API Call**: Axios sends HTTP request with JWT token
+3. **Authentication**: JWT Filter validates token
+4. **Controller**: Routes request to appropriate controller
+5. **Service Layer**: Executes business logic
+6. **Repository**: Performs database operations via JPA
+7. **Database**: PostgreSQL processes query
+8. **Response**: Data flows back through layers to frontend
+
 ---
 
 ## 🚀 Live Demo
 
-> **Note:** Demo links will be updated upon deployment
+Experience the application live:
 
 | Service | URL | Status |
 |---------|-----|--------|
-| Frontend | [Vercel URL — TBD] | 🟡 Coming Soon |
-| Backend API | [Render URL — TBD] | 🟡 Coming Soon |
+| **Frontend** | [https://library-management-system-alpha-lac.vercel.app](https://library-management-system-alpha-lac.vercel.app) | 🟢 Live |
+| **Backend API** | [https://library-api-rfxm.onrender.com/api](https://library-api-rfxm.onrender.com/api) | 🟢 Live |
+
+> **Note:** The backend may take 30-60 seconds to wake up on first request due to Render's free tier cold starts.
 
 ### 🔑 Demo Credentials
 
@@ -49,6 +188,28 @@ Test the application with these pre-configured accounts:
 | **Librarian** | librarian@library.com | Librarian@123 | Book & issue management |
 
 > ⚠️ **Security Note:** These are demo credentials. Change default passwords in production environments.
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🔐 Login Page
+![Login Page](https://via.placeholder.com/800x400/1a237e/ffffff?text=Login+Page)
+
+### 📊 Dashboard
+![Dashboard](https://via.placeholder.com/800x400/00695c/ffffff?text=Dashboard+with+Statistics)
+
+### 📚 Books Management
+![Books Page](https://via.placeholder.com/800x400/2e7d32/ffffff?text=Books+Management)
+
+### 📋 Issue Management
+![Issue Page](https://via.placeholder.com/800x400/d84315/ffffff?text=Issue+Management)
+
+</div>
+
+> **Note:** Replace placeholder images with actual screenshots of your application
 
 ---
 
@@ -131,6 +292,17 @@ Test the application with these pre-configured accounts:
 - **Database:** PostgreSQL (Cloud)
 - **Version Control:** Git
 
+### Why These Technologies?
+
+| Technology | Reason |
+|------------|--------|
+| **Spring Boot** | Rapid development, auto-configuration, production-ready features |
+| **React + TypeScript** | Type-safe development, component reusability, strong ecosystem |
+| **PostgreSQL** | ACID compliance, reliability, advanced features for production |
+| **JWT** | Stateless authentication, scalable across multiple servers |
+| **Material-UI** | Professional components, accessibility, responsive design |
+| **Vite** | Lightning-fast HMR, optimized builds, modern development experience |
+
 ---
 
 ## 📋 Prerequisites
@@ -205,7 +377,11 @@ The backend API will be available at `http://localhost:8080`
 Create `frontend/.env`:
 
 ```env
+# For local development
 VITE_API_URL=http://localhost:8080/api
+
+# For production (Vercel deployment)
+# VITE_API_URL=https://library-api-rfxm.onrender.com/api
 ```
 
 #### Install Dependencies & Run
@@ -221,6 +397,55 @@ npm run dev
 ```
 
 The frontend will be available at `http://localhost:5173`
+
+### 4️⃣ Environment Variables Reference
+
+#### Backend Environment Variables
+
+Create `backend/src/main/resources/application-local.properties`:
+
+```properties
+# Server Configuration
+server.port=8080
+
+# Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/library_management
+spring.datasource.username=root
+spring.datasource.password=your_password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA/Hibernate Configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+# JWT Configuration
+jwt.secret=YourSuperSecretKeyMustBeAtLeast256BitsLongForHS256Algorithm
+jwt.expiration=86400000
+
+# CORS Configuration
+allowed.origins=http://localhost:5173
+
+# Logging
+logging.level.com.library.management=DEBUG
+```
+
+#### Frontend Environment Variables
+
+Create `frontend/.env.local`:
+
+```env
+# API Base URL
+VITE_API_URL=http://localhost:8080/api
+
+# App Configuration
+VITE_APP_NAME=Library Management System
+VITE_APP_VERSION=1.0.0
+
+# Feature Flags (optional)
+VITE_ENABLE_ANALYTICS=false
+VITE_ENABLE_DEBUG=true
+```
 
 ---
 
@@ -302,11 +527,12 @@ docker-compose up -d
    | `DB_PASSWORD` | Database password | From Render dashboard |
    | `JWT_SECRET` | Secret key for JWT (min 256 bits) | `your-strong-secret-key-here` |
    | `SPRING_PROFILES_ACTIVE` | Active profile | `prod` |
-   | `ALLOWED_ORIGINS` | CORS allowed origins | `https://your-app.vercel.app` |
+   | `ALLOWED_ORIGINS` | CORS allowed origins | `https://library-management-system-alpha-lac.vercel.app` |
 
 4. **Deploy**
    - Click "Create Web Service"
    - Wait for build completion
+   - Your API will be live at: `https://library-api-rfxm.onrender.com/api`
 
 ### Frontend Deployment (Vercel)
 
@@ -323,11 +549,15 @@ docker-compose up -d
 
    | Variable | Value |
    |----------|-------|
-   | `VITE_API_URL` | `https://your-backend.onrender.com/api` |
+   | `VITE_API_URL` | `https://library-api-rfxm.onrender.com/api` |
 
 3. **Deploy**
    - Click "Deploy"
-   - Access your app at the provided Vercel URL
+   - Your app will be live at: `https://library-management-system-alpha-lac.vercel.app`
+
+> **Production URLs:**
+> - Frontend: https://library-management-system-alpha-lac.vercel.app
+> - Backend: https://library-api-rfxm.onrender.com/api
 
 ---
 
@@ -468,6 +698,35 @@ library-management-system/
 
 ---
 
+## 🔒 Security Features
+
+- **JWT Authentication**: Secure token-based authentication with expiration
+- **Password Encryption**: BCrypt hashing with salt rounds
+- **CORS Protection**: Configured allowed origins for production
+- **SQL Injection Prevention**: Parameterized queries via JPA
+- **XSS Protection**: Input sanitization and validation
+- **HTTPS Only**: All production traffic encrypted via TLS
+- **Role-Based Access Control**: Fine-grained permission system
+- **Environment Variables**: Sensitive data stored securely
+
+## ⚡ Performance Optimizations
+
+### Backend
+- **Connection Pooling**: HikariCP for efficient database connections
+- **Query Optimization**: Indexed database columns for faster searches
+- **Lazy Loading**: JPA lazy fetching to reduce memory footprint
+- **Caching**: Spring Cache abstraction for frequently accessed data
+- **Pagination**: Server-side pagination for large datasets
+
+### Frontend
+- **Code Splitting**: Route-based lazy loading
+- **Tree Shaking**: Vite removes unused code
+- **Asset Optimization**: Compressed images and minified bundles
+- **CDN Delivery**: Vercel Edge Network for global distribution
+- **Memoization**: React.memo and useMemo for expensive computations
+
+---
+
 ## 🧪 Testing
 
 ### Backend Tests
@@ -502,6 +761,52 @@ npm run test:e2e
 
 ---
 
+## 🔧 Troubleshooting
+
+### Backend Issues
+
+**Problem**: Backend takes long to respond on first request
+- **Solution**: Render free tier has cold starts. Wait 30-60 seconds for the service to wake up.
+
+**Problem**: Database connection errors
+- **Solution**: Verify `DATABASE_URL`, `DB_USERNAME`, and `DB_PASSWORD` environment variables are correct.
+
+**Problem**: CORS errors in browser console
+- **Solution**: Ensure `ALLOWED_ORIGINS` environment variable includes your frontend URL.
+
+**Problem**: JWT token expired errors
+- **Solution**: Check `jwt.expiration` in application.properties. Default is 24 hours.
+
+### Frontend Issues
+
+**Problem**: API calls failing with 404
+- **Solution**: Verify `VITE_API_URL` in `.env` points to the correct backend URL.
+
+**Problem**: Build fails on Vercel
+- **Solution**: Check that all dependencies are in `package.json` and `tsconfig.json` is valid.
+
+**Problem**: Blank page after deployment
+- **Solution**: Check browser console for errors. Ensure environment variables are set in Vercel.
+
+**Problem**: Authentication not persisting
+- **Solution**: Check if browser is blocking localStorage/sessionStorage or if tokens are expiring too quickly.
+
+### Common Issues
+
+**Problem**: "Cannot connect to database" error locally
+- **Solution**: Ensure MySQL/PostgreSQL is running and credentials in `application.properties` are correct.
+
+**Problem**: Port already in use
+- **Solution**: Kill the process using the port or change port in configuration:
+  ```bash
+  # Find process on port 8080
+  lsof -i :8080
+  # Kill process
+  kill -9 <PID>
+  ```
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -519,6 +824,41 @@ Contributions are welcome! Please follow these steps:
 - Write meaningful commit messages
 - Add tests for new features
 - Update documentation as needed
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1 - Core Features ✅
+- [x] User authentication and authorization
+- [x] Book CRUD operations
+- [x] Issue and return management
+- [x] Basic dashboard
+- [x] Deployment to production
+
+### Phase 2 - Enhanced Features 🚧
+- [ ] Email notifications for overdue books
+- [ ] QR code generation for books
+- [ ] Book reservation system
+- [ ] Advanced analytics and reports
+- [ ] Export data to PDF/Excel
+- [ ] Mobile responsive improvements
+
+### Phase 3 - Advanced Features 📋
+- [ ] Multi-library support
+- [ ] Book recommendation system
+- [ ] Integration with external book APIs
+- [ ] Real-time notifications using WebSocket
+- [ ] Mobile app (React Native)
+- [ ] Barcode scanner integration
+
+### Phase 4 - Enterprise Features 🎯
+- [ ] Multi-tenancy support
+- [ ] Advanced reporting and BI dashboards
+- [ ] Integration with payment gateways for fines
+- [ ] Book procurement management
+- [ ] Inventory management
+- [ ] API rate limiting and monitoring
 
 ---
 
@@ -546,6 +886,58 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+## ❓ Frequently Asked Questions (FAQ)
+
+<details>
+<summary><b>Q: Can I use this project for commercial purposes?</b></summary>
+<br>
+A: Yes, this project is licensed under MIT License, which allows commercial use.
+</details>
+
+<details>
+<summary><b>Q: How do I reset the admin password?</b></summary>
+<br>
+A: You can reset it directly in the database or use the password reset API endpoint. For security, passwords are BCrypt hashed.
+</details>
+
+<details>
+<summary><b>Q: Can I use MySQL instead of PostgreSQL?</b></summary>
+<br>
+A: Yes! Update the dependencies in pom.xml and change the database configuration in application.properties.
+</details>
+
+<details>
+<summary><b>Q: Is there a limit to the number of books I can add?</b></summary>
+<br>
+A: No hard limit in the application. The limit depends on your database capacity and hosting plan.
+</details>
+
+<details>
+<summary><b>Q: How are fines calculated?</b></summary>
+<br>
+A: Fines are calculated based on the number of overdue days multiplied by a configurable daily fine rate set in the backend.
+</details>
+
+<details>
+<summary><b>Q: Can I customize the theme colors?</b></summary>
+<br>
+A: Yes! Modify the theme configuration in the frontend code. Material-UI themes are fully customizable.
+</details>
+
+<details>
+<summary><b>Q: Why does the backend take time to respond on first load?</b></summary>
+<br>
+A: The free tier of Render has "cold starts" - the server spins down after inactivity and takes 30-60 seconds to wake up.
+</details>
+
+<details>
+<summary><b>Q: How can I contribute to this project?</b></summary>
+<br>
+A: Fork the repository, make your changes, and submit a pull request. See the Contributing section for guidelines.
+</details>
+
+---
+
 ## 📞 Support
 
 For support, email your.email@example.com or open an issue in the repository.
@@ -556,6 +948,6 @@ For support, email your.email@example.com or open an issue in the repository.
 
 **⭐ Star this repository if you find it helpful!**
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by [Md Sarfaraz Alam]
 
 </div>
