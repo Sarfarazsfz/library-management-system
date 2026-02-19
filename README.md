@@ -23,7 +23,7 @@ The Library Management System is a comprehensive web application designed to str
 ### Key Highlights
 
 - 🔐 **Secure Authentication** - JWT-based authentication with role-based access control
-- 📊 **Real-time Dashboard** - Interactive statistics and analytics
+- 📊 **Real-time Dashboard** - Performance optimized dashboard with real-time updates
 - 🎨 **Modern UI/UX** - Responsive design with Material-UI components
 - 🚀 **Production Ready** - Dockerized deployment with CI/CD support
 - 🔍 **Advanced Search** - Efficient book cataloging and search functionality
