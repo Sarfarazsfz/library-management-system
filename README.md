@@ -37,7 +37,7 @@ The Library Management System is a comprehensive web application designed to str
 **Run Locally**
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/library-management-system.git
+git clone https://github.com/Sarfarazsfz/library-management-system.git
 
 # Start Backend
 cd backend
@@ -322,7 +322,7 @@ Before you begin, ensure you have the following installed:
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/library-management-system.git
+git clone https://github.com/Sarfarazsfz/library-management-system.git
 cd library-management-system
 ```
 
@@ -367,7 +367,7 @@ mvn spring-boot:run
 
 The backend API will be available at `http://localhost:8080`
 
-**API Documentation:** `http://localhost:8080/swagger-ui.html` (if Swagger is configured)
+**API Documentation:** Available via Swagger UI when enabled.
 
 ### 3️⃣ Frontend Setup
 
@@ -867,9 +867,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 👨‍💻 Author
+## Author
 
-**Md Sarfaraz Alam**
+Md Sarfaraz Alam  
+Software Developer | Full-Stack Engineer
 
 - GitHub: [@Sarfarazsfz](https://github.com/Sarfarazsfz)
 - LinkedIn: https://www.linkedin.com/in/faraz4237
@@ -950,6 +951,6 @@ If you have any questions, suggestions, or feedback, feel free to open an issue 
 
 ⭐ **If you found this project helpful, please consider giving it a star!**
 
-Made with ❤️ by **Md Sarfaraz Alam**
+Maintained by Md Sarfaraz Alam
 
 </div>
